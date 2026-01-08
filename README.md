@@ -64,7 +64,7 @@ SupplyMind follows a **modular AI pipeline**:
 ### 🔄 System Flowchart  
 Overall workflow and user interaction flow of the SupplyMind system.
 
-![System Flowchart](results/s1.png)
+![System Flowchart](s1.png)
 
 ---
 
