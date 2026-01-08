@@ -1,100 +1,103 @@
-# SupplyMind  
-**An AI-Driven Retail Inventory Forecasting and Alert Management System**
+# 📦 SupplyMind  
+**An AI-Driven Retail Inventory Forecasting & Alert Management System**
+
+SupplyMind is an **end-to-end AI-powered retail intelligence system** that automates invoice processing, predicts product demand using deep learning, and generates real-time inventory alerts to support smarter retail decision-making.
 
 ---
 
-## What This Project Does
+## 🚀 What This Project Does
 
-SupplyMind is an end-to-end AI-based system that automates retail inventory management by combining OCR-based invoice processing, deep learning demand forecasting, and real-time inventory alerts.  
-The system helps retailers reduce stockouts, overstocking, and manual data errors while improving decision-making efficiency.
+SupplyMind helps retailers:
+- ❌ Eliminate manual invoice entry  
+- 📉 Reduce stockouts and overstocking  
+- 📊 Improve demand forecasting accuracy  
+- ⚡ Receive real-time inventory alerts  
 
----
-
-## Framework Overview
-
-SupplyMind follows a modular pipeline:
-
-1. **Invoice Data Extraction**  
-   OCR is used to convert invoice images into structured digital data.
-
-2. **Data Preprocessing**  
-   Cleaning, normalization, and structuring of multi-category time-series data.
-
-3. **Demand Forecasting**  
-   Deep learning model predicts daily and weekly product demand.
-
-4. **Alert Generation**  
-   Intelligent logic detects stockout risks, overstock conditions, and demand spikes.
-
-5. **Dashboard & APIs**  
-   Real-time visualization and backend integration using REST APIs.
+By combining **OCR automation**, **deep learning forecasting**, and **interactive dashboards**, the system delivers a complete inventory management workflow.
 
 ---
 
-## Dataset Used
+## 🧠 Framework Overview
 
-- Retail inventory and sales data extracted from invoices  
-- Multi-category time-series records  
-- Preprocessed to handle missing values, irregular intervals, and inconsistencies  
+SupplyMind follows a **modular AI pipeline**:
+
+1. 📄 **Invoice Data Extraction**  
+   OCR converts invoice images into structured digital records.
+
+2. 🧹 **Data Preprocessing**  
+   Cleans, normalizes, and structures multi-category time-series data.
+
+3. 📈 **Demand Forecasting**  
+   Deep learning predicts daily and weekly product demand.
+
+4. 🚨 **Alert Generation**  
+   Detects stockout risks, overstock conditions, and demand spikes.
+
+5. 🖥️ **Dashboard & APIs**  
+   Real-time visualization with backend integration via REST APIs.
 
 ---
 
-## Models & Methods (High-Level)
+## 🗂️ Dataset Used
 
-- **Forecasting Model:** N-BEATS (Neural Basis Expansion Analysis for Time Series)
-- **OCR:** Tesseract OCR with OpenCV-based image preprocessing
-- **Backend:** Flask APIs with SQLite database
-- **Frontend:** HTML, CSS, JavaScript, Tailwind CSS
-- **Visualization:** Chart.js
-- **Data Processing:** Python, Pandas, NumPy
+- 🧾 Retail sales & inventory data extracted from invoices  
+- 🛒 Multi-category time-series records  
+- 🧠 Preprocessed to handle missing values, noise, and irregular intervals  
 
 ---
 
-## Results
+## ⚙️ Models & Methods (High-Level)
 
-### AI Forecasting Output
-Demand forecasts generated for multiple product categories with improved accuracy.
+- 🧠 **Forecasting Model:** N-BEATS (Neural Basis Expansion Analysis for Time Series)  
+- 🔍 **OCR:** Tesseract OCR + OpenCV image preprocessing  
+- 🧩 **Backend:** Flask APIs with SQLite database  
+- 🎨 **Frontend:** HTML, CSS, JavaScript, Tailwind CSS  
+- 📊 **Visualization:** Chart.js  
+- 🧪 **Data Processing:** Python, Pandas, NumPy  
+
+---
+
+## 📊 Results
+
+### 📈 AI Forecasting Output  
+Accurate demand forecasts generated for multiple product categories.
 
 ![AI Forecasting Screen](results/ai_forecasting.png)
 
 ---
 
-### Inventory Dashboard
-Real-time visualization of inventory health, forecasts, and alerts.
+### 🖥️ Inventory Dashboard  
+Interactive dashboard displaying inventory health, forecasts, and alerts.
 
 ![Dashboard Screen](results/dashboard.png)
 
 ---
 
-### Alerts & Notifications
-Automatic detection of stockout risks, overstock conditions, and abnormal demand.
+### 🚨 Alerts & Notifications  
+Automatic detection of stockout risks, overstock conditions, and unusual demand patterns.
 
 ![Alerts Module](results/alerts.png)
 
 ---
 
-## How to Run (Optional)
+## ▶️ How to Run (Optional)
 
-1. Clone the repository  
-2. Install required Python dependencies  
-3. Run the Flask backend  
-4. Access the dashboard via browser  
+1. 📥 Clone the repository  
+2. 📦 Install required Python dependencies  
+3. 🚀 Run the Flask backend  
+4. 🌐 Access the dashboard via browser  
 
-(Exact setup depends on deployment environment.)
+*(Exact setup may vary based on environment.)*
 
 ---
 
-## Author
+## 👩‍💻 Author
 
 **Riya Kansal**  
-B.Tech Computer Science & Engineering  
-Amity School of Engineering & Technology  
+🎓 B.Tech Computer Science & Engineering  
+🏫 Amity School of Engineering & Technology  
 
 ---
 
-## Citation
-
-If you use or reference this project, please cite it as an academic or internship project developed at Amity School of Engineering & Technology.
-
----
+✨ *SupplyMind demonstrates how AI-driven automation can transform retail inventory management through intelligent forecasting and real-time decision support.*
 
