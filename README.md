@@ -106,7 +106,7 @@ Automatically generated inventory and forecasting reports.
 ### ⚙️ Batch Operations  
 Batch-level processing for inventory updates and forecasting runs.
 
-![Batch Operations](batch operation.png)
+![Batch Operations](batchoperation.png)
 
 
 ---
