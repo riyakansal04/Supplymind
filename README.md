@@ -59,17 +59,26 @@ SupplyMind follows a **modular AI pipeline**:
 
 ## 📊 Results
 
+## 📊 Results
+
+### 🔄 System Flowchart  
+Overall workflow and user interaction flow of the SupplyMind system.
+
+![System Flowchart](results/s1.png)
+
+---
+
 ### 📈 AI Forecasting Output  
 Accurate demand forecasts generated for multiple product categories.
 
-![AI Forecasting Screen](results/ai_forecasting.png)
+![AI Forecasting Screen](results/forecasting.jpg)
 
 ---
 
 ### 🖥️ Inventory Dashboard  
 Interactive dashboard displaying inventory health, forecasts, and alerts.
 
-![Dashboard Screen](results/dashboard.png)
+![Dashboard Screen](results/dashboard.jpg)
 
 ---
 
@@ -77,6 +86,28 @@ Interactive dashboard displaying inventory health, forecasts, and alerts.
 Automatic detection of stockout risks, overstock conditions, and unusual demand patterns.
 
 ![Alerts Module](results/alerts.png)
+
+---
+
+### 📊 Sales Analytics  
+Visual analysis of sales trends and demand patterns.
+
+![Sales Analytics](results/sales.png)
+
+---
+
+### 🗂️ Reports Module  
+Automatically generated inventory and forecasting reports.
+
+![Reports Module](results/reports.png)
+
+---
+
+### ⚙️ Batch Operations  
+Batch-level processing for inventory updates and forecasting runs.
+
+![Batch Operations](results/batch operation.png)
+
 
 ---
 
