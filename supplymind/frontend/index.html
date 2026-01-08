@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupplyMind - AI Inventory Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- ========== LOGIN PAGE ========== -->
+    <div id="loginPage" class="auth-container">
+        <div class="auth-left">
+            <div class="auth-branding">
+                <div class="logo-large">📦</div>
+                <h1>SupplyMind</h1>
+                <p>Intelligent inventory management powered by advanced AI forecasting. Optimize your stock levels, reduce costs, and maximize profits.</p>
+                
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="icon">🤖</div>
+                        <div>
+                            <h3>AI-Powered Forecasting</h3>
+                            <p>Predict demand with 90%+ accuracy</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="icon">📊</div>
+                        <div>
+                            <h3>Real-Time Analytics</h3>
+                            <p>Track performance instantly</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="icon">⚡</div>
+                        <div>
+                            <h3>Smart Alerts</h3>
+                            <p>Never run out of stock</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-right">
+            <div class="auth-box">
+                <div class="auth-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue to your dashboard</p>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="you@company.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-auth">Sign In</button>
+                </form>
+                
+                <div class="auth-divider">or</div>
+                
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" onclick="showRegister()">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== REGISTER PAGE ========== -->
+    <div id="registerPage" class="auth-container" style="display:none;">
+        <div class="auth-left">
+            <div class="auth-branding">
+                <div class="logo-large">📦</div>
+                <h1>Join SupplyMind</h1>
+                <p>Start managing your inventory intelligently. Get instant access to AI-powered forecasting and analytics.</p>
+                
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="icon">✅</div>
+                        <div>
+                            <h3>Quick Setup</h3>
+                            <p>Start in under 2 minutes</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="icon">🔒</div>
+                        <div>
+                            <h3>Secure & Private</h3>
+                            <p>Your data is protected</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="icon">📈</div>
+                        <div>
+                            <h3>Grow Your Business</h3>
+                            <p>Make data-driven decisions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-right">
+            <div class="auth-box">
+                <div class="auth-header">
+                    <h2>Create Account</h2>
+                    <p>Start your free trial today</p>
+                </div>
+                
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="you@company.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Create a strong password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Store Name</label>
+                        <input type="text" name="store_name" placeholder="My Store" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-auth">Create Account</button>
+                </form>
+                
+                <div class="auth-divider">or</div>
+                
+                <div class="auth-footer">
+                    Already have an account? <a href="#" onclick="showLogin()">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MAIN APPLICATION ========== -->
+    <!-- MAIN APPLICATION -->
+    <div id="mainApp" class="app-wrapper" style="display:none;">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-content">
+                    <div class="logo-icon">📦</div>
+                    <div class="logo-text">
+                        <h1>SupplyMind</h1>
+                        <span class="ai-badge">AI POWERED</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">SM</div>
+                <div class="user-info">
+                    <h4 id="userName">Store Manager</h4>
+                    <p id="userEmail">manager@store.com</p>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <button class="nav-btn active" data-view="dashboard">
+                        <span class="icon">📊</span>
+                        <span>Dashboard</span>
+                    </button>
+                    <button class="nav-btn" data-view="billing">
+                        <span class="icon">💰</span>
+                        <span>Billing & Sales</span>
+                    </button>
+                    <button class="nav-btn" data-view="inventory">
+                        <span class="icon">📦</span>
+                        <span>Inventory</span>
+                    </button>
+                    <button class="nav-btn" data-view="forecasting">
+                        <span class="icon">🔮</span>
+                        <span>AI Forecasting</span>
+                    </button>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Analytics</div>
+                    <button class="nav-btn" data-view="analytics">
+                        <span class="icon">📈</span>
+                        <span>Sales Analytics</span>
+                    </button>
+                    <button class="nav-btn" data-view="batch">
+                        <span class="icon">⚡</span>
+                        <span>Batch Operations</span>
+                    </button>
+                    <button class="nav-btn" data-view="reports">
+                        <span class="icon">📄</span>
+                        <span>Reports</span>
+                    </button>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Management</div>
+                    <button class="nav-btn" data-view="suppliers">
+                        <span class="icon">🏢</span>
+                        <span>Suppliers</span>
+                    </button>
+                    <button class="nav-btn" data-view="alerts">
+                        <span class="icon">🔔</span>
+                        <span>Alerts</span>
+                        <span class="alert-badge" id="alertCount">0</span>
+                    </button>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">
+                    🚪 Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <h2 id="pageTitle">Dashboard</h2>
+                    <p id="pageSubtitle">Welcome back! Here's what's happening.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="showAddProductModal()">
+                        ➕ Add Product
+                    </button>
+                    <button class="btn-primary" onclick="analyzeInventory()">
+                        🔍 Analyze Inventory
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Dashboard View -->
+                <div id="dashboardView" class="view active">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper">📦</div>
+                                <div class="stat-details">
+                                    <h3 id="totalProducts">0</h3>
+                                    <p>Total Products</p>
+                                </div>
+                            </div>
+                            <div class="stat-trend">↗ Active inventory</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper" style="background: linear-gradient(135deg, #10b981, #059669);">💰</div>
+                                <div class="stat-details">
+                                    <h3 id="inventoryValue">₹0</h3>
+                                    <p>Inventory Value</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🔔</div>
+                                <div class="stat-details">
+                                    <h3 id="activeAlerts">0</h3>
+                                    <p>Active Alerts</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">📊</div>
+                                <div class="stat-details">
+                                    <h3 id="monthlyRevenue">₹0</h3>
+                                    <p>Monthly Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <div class="action-card" onclick="initializeSystem()">
+                            <div class="icon">🚀</div>
+                            <h4>Initialize Data</h4>
+                            <p>Load sample products</p>
+                        </div>
+                        <div class="action-card" onclick="switchView('forecasting')">
+                            <div class="icon">🔮</div>
+                            <h4>Generate Forecast</h4>
+                            <p>AI demand prediction</p>
+                        </div>
+                        <div class="action-card" onclick="switchView('batch')">
+                            <div class="icon">⚡</div>
+                            <h4>Batch Operations</h4>
+                            <p>Bulk updates</p>
+                        </div>
+                        <div class="action-card" onclick="switchView('analytics')">
+                            <div class="icon">📈</div>
+                            <h4>View Analytics</h4>
+                            <p>Sales performance</p>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <h3>📊 Stock Levels by Category</h3>
+                            <div style="height: 350px; position: relative;">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>⚠️ Low Stock Items</h3>
+                            <div id="lowStockList" style="max-height: 350px; overflow-y: auto;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="billingView" class="view">
+                    <div class="chart-grid" style="grid-template-columns: 1fr 1fr;">
+                        <!-- Product Selection -->
+                        <div class="chart-card">
+                            <h3>🛒 Select Products</h3>
+                            <div style="padding:20px 0;">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select id="billingCategory" class="select-box" onchange="onBillingCategoryChange()">
+                                        <option value="">Select Category</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Product</label>
+                                    <select id="billingProduct" class="select-box" disabled onchange="onBillingProductChange()">
+                                        <option value="">Select Product</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" id="billingQuantity" value="1" min="1" disabled class="select-box" style="width:100%;">
+                                </div>
+                                
+                                <button class="btn-primary" onclick="addToBillingCart()" style="width:100%;margin-top:20px;">
+                                    ➕ Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cart -->
+                        <div class="chart-card">
+                            <h3>🛒 Cart</h3>
+                            <div id="billingCartItems" style="max-height:400px;overflow-y:auto;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Total & Generate Bill -->
+                    <div class="chart-card" style="margin-top:20px;">
+                        <div id="billingTotal"></div>
+                    </div>
+                </div>
+                <!-- Inventory View -->
+                <div id="inventoryView" class="view">
+                    <div class="table-card">
+                        <div class="toolbar">
+                            <input type="text" id="searchProducts" placeholder="🔍 Search products..." class="search-box">
+                            <select id="categoryFilter" class="filter-select">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Brand</th>
+                                    <th>Category</th>
+                                    <th>Stock Level</th>
+                                    <th>Purchase Price</th>
+                                    <th>Selling Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Forecasting View -->
+                <div id="forecastingView" class="view">
+                    <div class="chart-card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                            <div>
+                                <h3>🔮 AI Demand Forecasting</h3>
+                                <p style="color:var(--gray); margin-top:8px;">Predict future demand with machine learning</p>
+                            </div>
+                            <select id="forecastProductSelect" class="select-box" style="width:300px;"></select>
+                        </div>
+                        <button class="btn-primary" onclick="generateForecast()">
+                            Generate 30-Day Forecast
+                        </button>
+                    </div>
+                    
+                    <div id="forecastResults" class="forecast-results" style="display:none;">
+                        <div class="forecast-header">
+                            <h3>📈 Forecast Generated Successfully</h3>
+                            <p>AI-powered demand predictions for the next 30 days</p>
+                        </div>
+
+                        <div class="chart-card">
+                            <h3>Demand Forecast Chart</h3>
+                            <div style="height: 400px; position: relative;">
+                                <canvas id="forecastChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div id="recommendationsList" style="margin-top:20px;"></div>
+                    </div>
+                </div>
+
+                <!-- Analytics View -->
+                <div id="analyticsView" class="view">
+                    <div class="chart-card" style="margin-bottom:24px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3>📊 Sales Analytics</h3>
+                            <select id="analyticsTimeRange" class="select-box" onchange="loadAnalytics()">
+                                <option value="7">Last 7 Days</option>
+                                <option value="30" selected>Last 30 Days</option>
+                                <option value="90">Last 90 Days</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper">📦</div>
+                                <div class="stat-details">
+                                    <h3 id="totalSalesUnits">0</h3>
+                                    <p>Units Sold</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper" style="background: linear-gradient(135deg, #10b981, #059669);">💵</div>
+                                <div class="stat-details">
+                                    <h3 id="totalSalesRevenue">₹0</h3>
+                                    <p>Total Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-icon-wrapper" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">📈</div>
+                                <div class="stat-details">
+                                    <h3 id="avgSaleValue">₹0</h3>
+                                    <p>Avg Sale Value</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <h3>Daily Sales Trend</h3>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="dailySalesChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Category Performance</h3>
+                            <div style="height: 300px; position: relative;">
+                                <canvas id="categoryPerfChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-card">
+                        <div style="padding:20px;border-bottom:1px solid var(--border);background:var(--bg-gray);">
+                            <h3>🏆 Top 10 Products by Revenue</h3>
+                        </div>
+                        <div id="topProductsList"></div>
+                    </div>
+                </div>
+
+                <!-- Batch Operations View (NEW FEATURE) -->
+                <div id="batchView" class="view">
+                    <div class="quick-actions">
+                        <div class="action-card" onclick="batchUpdatePrices()">
+                            <div class="icon">💰</div>
+                            <h4>Update Prices</h4>
+                            <p>Bulk price adjustments</p>
+                        </div>
+                        <div class="action-card" onclick="batchAdjustStock()">
+                            <div class="icon">📦</div>
+                            <h4>Stock Adjustment</h4>
+                            <p>Bulk quantity updates</p>
+                        </div>
+                        <div class="action-card" onclick="batchApplyDiscount()">
+                            <div class="icon">🏷️</div>
+                            <h4>Apply Discount</h4>
+                            <p>Category-wide discounts</p>
+                        </div>
+                        <div class="action-card" onclick="batchDeleteProducts()">
+                            <div class="icon">🗑️</div>
+                            <h4>Delete Products</h4>
+                            <p>Remove multiple items</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>⚡ Batch Operations History</h3>
+                        <div id="batchHistory" style="padding:20px;color:var(--gray);">
+                            No batch operations performed yet.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports View -->
+                <div id="reportsView" class="view">
+                    <div class="quick-actions">
+                        <div class="action-card" onclick="downloadReport('inventory')">
+                            <div class="icon">📄</div>
+                            <h4>Inventory Report</h4>
+                            <p>Current stock levels</p>
+                        </div>
+                        <div class="action-card" onclick="downloadReport('sales')">
+                            <div class="icon">💰</div>
+                            <h4>Sales Report</h4>
+                            <p>Revenue analysis</p>
+                        </div>
+                        <div class="action-card" onclick="downloadReport('forecast')">
+                            <div class="icon">🔮</div>
+                            <h4>Forecast Report</h4>
+                            <p>Demand predictions</p>
+                        </div>
+                        <div class="action-card" onclick="downloadReport('alerts')">
+                            <div class="icon">🔔</div>
+                            <h4>Alerts Report</h4>
+                            <p>Stock warnings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suppliers View -->
+                <div id="suppliersView" class="view">
+                    <div class="toolbar">
+                        <input type="text" id="searchSuppliers" placeholder="🔍 Search suppliers..." class="search-box">
+                        <button class="btn-primary" onclick="showAddSupplierModal()">
+                            ➕ Add Supplier
+                        </button>
+                    </div>
+                    <div class="suppliers-grid" id="suppliersGrid"></div>
+                </div>
+
+                <!-- Alerts View -->
+                <div id="alertsView" class="view">
+                    <div class="alerts-container" id="alertsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" name="product_name" placeholder="e.g., Lipstick Red Rouge" required>
+                </div>
+                <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text" name="brand" placeholder="e.g., Maybelline" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Cosmetics">Cosmetics</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Food & Beverages">Food & Beverages</option>
+                        <option value="Home & Kitchen">Home & Kitchen</option>
+                        <option value="Books & Stationery">Books & Stationery</option>
+                        <option value="Sports & Fitness">Sports & Fitness</option>
+                        <option value="Toys & Games">Toys & Games</option>
+                        <option value="Health & Wellness">Health & Wellness</option>
+                        <option value="Automotive">Automotive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Purchase Price (₹)</label>
+                    <input type="number" name="purchase_price" placeholder="150" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Selling Price (₹)</label>
+                    <input type="number" name="selling_price" placeholder="250" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Initial Quantity</label>
+                    <input type="number" name="quantity" placeholder="100" value="0" min="0">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Add Product</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('addProductModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addSupplierModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Supplier</h2>
+            <form id="addSupplierForm">
+                <div class="form-group">
+                    <label>Supplier Name</label>
+                    <input type="text" name="supplier_name" placeholder="Supplier Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" name="contact_person" placeholder="Contact Person">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea name="address" placeholder="Address" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Payment Terms</label>
+                    <input type="text" name="payment_terms" placeholder="Payment Terms">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Add Supplier</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('addSupplierModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader"></div>
+        <p id="loadingText">Processing...</p>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="inventory.js"></script>
+    <script src="forecasting.js"></script>
+    <script src="analytics.js"></script>
+    <script src="suppliers.js"></script>
+    <script src="alerts.js"></script>
+    <script src="reports.js"></script>
+    <script src="batch.js"></script>
+</body>
+</html>
